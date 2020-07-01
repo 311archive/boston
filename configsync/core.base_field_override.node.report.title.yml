@@ -1,0 +1,18 @@
+uuid: 33e9f73d-c281-4524-90fb-24480fa048c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.report
+id: node.report.title
+field_name: title
+entity_type: node
+bundle: report
+label: Summary
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: e9a36f96-0120-4be9-87cc-c4010bfcf648
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_request_id
+    - node.type.report
+id: node.report.field_service_request_id
+field_name: field_service_request_id
+entity_type: node
+bundle: report
+label: 'Service Request ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

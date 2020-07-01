@@ -1,0 +1,14 @@
+uuid: 77536548-9dd3-4752-b7c3-aef93731de18
+name: 'Boston 311 Archive'
+mail: balsam.adam@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /reports
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

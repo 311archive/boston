@@ -1,0 +1,22 @@
+uuid: 438552e9-ea0b-4c3f-959e-3d388b2f2919
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bos311bootstrap
+_core:
+  default_config_hash: tZtWC6EKIYALVtpV4mPz79GsLZD6IFWb7Wk1B7Rd8Go
+id: bos311bootstrap_messages
+theme: bos311bootstrap
+region: content
+weight: -7
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  provider: system
+  label_display: '0'
+visibility: {  }

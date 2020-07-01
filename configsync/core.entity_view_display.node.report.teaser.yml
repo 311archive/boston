@@ -1,0 +1,50 @@
+uuid: a1dd7548-bc28-45e6-b651-6afcc754c387
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.report.field_address
+    - field.field.node.report.field_description
+    - field.field.node.report.field_latitude
+    - field.field.node.report.field_longitude
+    - field.field.node.report.field_media_url
+    - field.field.node.report.field_neighborhood
+    - field.field.node.report.field_requested_datetime
+    - field.field.node.report.field_requested_timestamp
+    - field.field.node.report.field_service_name
+    - field.field.node.report.field_service_request_id
+    - field.field.node.report.field_status
+    - field.field.node.report.field_status_notes
+    - field.field.node.report.field_updated_datetime
+    - field.field.node.report.field_updated_timestamp
+    - field.field.node.report.field_zip_code
+    - node.type.report
+  module:
+    - user
+id: node.report.teaser
+targetEntityType: node
+bundle: report
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_address: true
+  field_description: true
+  field_latitude: true
+  field_longitude: true
+  field_media_url: true
+  field_neighborhood: true
+  field_requested_datetime: true
+  field_requested_timestamp: true
+  field_service_name: true
+  field_service_request_id: true
+  field_status: true
+  field_status_notes: true
+  field_updated_datetime: true
+  field_updated_timestamp: true
+  field_zip_code: true

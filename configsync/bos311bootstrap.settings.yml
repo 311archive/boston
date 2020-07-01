@@ -1,0 +1,21 @@
+features:
+  node_user_picture: false
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 0
+logo:
+  use_default: 0
+  path: logo-light.png
+favicon:
+  use_default: 0
+  path: ''
+b4_top_container: container
+b4_body_schema: none
+b4_body_bg_schema: none
+b4_navbar_schema: dark
+b4_navbar_bg_schema: dark
+b4_footer_schema: dark
+b4_footer_bg_schema: secondary
+subtheme_folder: ''
+subtheme_name: ''
+subtheme_machine_name: ''

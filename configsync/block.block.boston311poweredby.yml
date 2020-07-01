@@ -1,0 +1,20 @@
+uuid: 41d3c9b7-1b9f-4806-b530-26d075618fa9
+langcode: en
+status: true
+dependencies:
+  module:
+    - bos311
+  theme:
+    - bos311bootstrap
+id: boston311poweredby
+theme: bos311bootstrap
+region: footer
+weight: 0
+provider: null
+plugin: bos311_powered_by
+settings:
+  id: bos311_powered_by
+  label: 'Boston 311 Powered By'
+  provider: bos311
+  label_display: '0'
+visibility: {  }

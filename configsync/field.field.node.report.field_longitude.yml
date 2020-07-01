@@ -1,0 +1,23 @@
+uuid: 9d6ae481-3b70-4982-aceb-376086e1b42a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_longitude
+    - node.type.report
+id: node.report.field_longitude
+field_name: field_longitude
+entity_type: node
+bundle: report
+label: Longitude
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

@@ -1,0 +1,74 @@
+{
+    "name": "balsama/bos311drupal",
+    "description": "Drupal project that makes Boston 311 reports more accessible.",
+    "type": "project",
+    "require": {
+        "drupal/core-recommended": "^9",
+        "drupal/core-composer-scaffold": "^9",
+        "drush/drush": "^10",
+        "composer/installers": "^1.2",
+        "ext-json": "*",
+        "cweagans/composer-patches": "^1.6.7",
+        "php": "^7.4",
+        "drupal/bootstrap4": "^2.0",
+        "drupal/metatag": "^1.13"
+    },
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Adam Balsam",
+            "email": "balsam.adam@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "docroot/"
+            }
+        },
+        "file-mapping": {
+            "[web-root]/sites/default/default.services.yml": {
+                "mode": "replace",
+                "path": "docroot/core/assets/scaffold/files/default.services.yml",
+                "overwrite": false
+            },
+            "[web-root]/sites/default/default.settings.php": {
+                "mode": "replace",
+                "path": "docroot/core/assets/scaffold/files/default.settings.php",
+                "overwrite": false
+            }
+        },
+        "installer-paths": {
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ]
+        },
+        "patches": {
+            "drupal/core": {
+                "2648950 - [PP-3] Use form element of type date instead textfield when selecting a date in an exposed filter": "https://www.drupal.org/files/issues/2019-10-30/2648950-224.8_8_x.patch",
+                "2230909 - Simple decimals fail to pass validation": "https://www.drupal.org/files/issues/2020-05-07/drupal_2230909_151.patch"
+            }
+        },
+        "enable-patching": true
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "require-dev": {
+        "drupal/core-dev": "*"
+    }
+}

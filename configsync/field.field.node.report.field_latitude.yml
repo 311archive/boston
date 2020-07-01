@@ -1,0 +1,23 @@
+uuid: fbc36df1-6608-42c8-b225-88c0e58f8a70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_latitude
+    - node.type.report
+id: node.report.field_latitude
+field_name: field_latitude
+entity_type: node
+bundle: report
+label: Latitude
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

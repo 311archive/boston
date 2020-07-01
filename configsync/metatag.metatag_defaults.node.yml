@@ -1,0 +1,21 @@
+uuid: 2d004e23-4233-456b-ab1f-a585265e5489
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rpwvgyEURXLz_JjgMCrkS1rUv-0k3L79BpO-ReN7fDI
+id: node
+label: Content
+tags:
+  title: '[node:title] | [site:name]'
+  canonical_url: '[node:url]'
+  description: 'In [node:field_neighborhood]: [node:field_description]'
+  twitter_cards_creator: '@bos311_archive'
+  twitter_cards_image: '[node:field_media_url]'
+  twitter_cards_site: '@bos311_archive'
+  twitter_cards_description: 'In [node:field_neighborhood]: [node:field_description]'
+  twitter_cards_image_alt: '[node:field_service_name] at [node:field_address] in [node:field_neighborhood]'
+  twitter_cards_creator_id: '1276722810732363776'
+  twitter_cards_type: summary_large_image
+  twitter_cards_site_id: '1276722810732363776'
+  twitter_cards_title: '[node:field_service_name] at [node:field_address] in [node:field_neighborhood]'

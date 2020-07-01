@@ -1,0 +1,21 @@
+uuid: 12be064e-aa13-44f1-a6d8-4cbccffa2db5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_updated_timestamp
+    - node.type.report
+id: node.report.field_updated_timestamp
+field_name: field_updated_timestamp
+entity_type: node
+bundle: report
+label: 'Updated Timestamp'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1592876796
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

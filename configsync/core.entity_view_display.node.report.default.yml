@@ -1,0 +1,165 @@
+uuid: 64c75fd9-6dc7-475a-99b8-b5aa7dfb9dd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.report.field_address
+    - field.field.node.report.field_description
+    - field.field.node.report.field_latitude
+    - field.field.node.report.field_longitude
+    - field.field.node.report.field_media_url
+    - field.field.node.report.field_neighborhood
+    - field.field.node.report.field_requested_datetime
+    - field.field.node.report.field_requested_timestamp
+    - field.field.node.report.field_service_name
+    - field.field.node.report.field_service_request_id
+    - field.field.node.report.field_status
+    - field.field.node.report.field_status_notes
+    - field.field.node.report.field_updated_datetime
+    - field.field.node.report.field_updated_timestamp
+    - field.field.node.report.field_zip_code
+    - node.type.report
+  module:
+    - datetime
+    - options
+    - user
+id: node.report.default
+targetEntityType: node
+bundle: report
+mode: default
+content:
+  field_address:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_latitude:
+    weight: 7
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 10
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_longitude:
+    weight: 8
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 10
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_media_url:
+    weight: 15
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_neighborhood:
+    weight: 10
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_requested_datetime:
+    weight: 12
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_requested_timestamp:
+    weight: 11
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  field_service_name:
+    weight: 4
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_service_request_id:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_status:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_status_notes:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_updated_datetime:
+    weight: 14
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_updated_timestamp:
+    weight: 13
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  field_zip_code:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

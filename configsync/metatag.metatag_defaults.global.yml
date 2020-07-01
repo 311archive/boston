@@ -1,0 +1,22 @@
+uuid: 74606cae-14df-4f0d-a792-68229d350719
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: sL588ui1E_8-2c_UupwyYxcqX2OVyMFp3HTLbbFqvPc
+id: global
+label: Global
+tags:
+  title: '[current-page:title] | [site:name]'
+  canonical_url: '[current-page:url]'
+  twitter_cards_creator: '@bos311_archive'
+  twitter_cards_image: /logo.png
+  twitter_cards_image_width: '540'
+  twitter_cards_site: '@bos311_archive'
+  twitter_cards_description: 'Searchable archive of Boston 311 reports'
+  twitter_cards_image_alt: 'Boston 311 Archive'
+  twitter_cards_creator_id: '1276722810732363776'
+  twitter_cards_type: summary_large_image
+  twitter_cards_site_id: '1276722810732363776'
+  twitter_cards_image_height: '540'
+  twitter_cards_title: 'Boston 311 Archive'

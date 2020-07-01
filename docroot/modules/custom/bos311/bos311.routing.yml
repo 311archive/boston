@@ -1,0 +1,8 @@
+bos311.bos311:
+  path: '/bos311'
+  defaults:
+    _controller: '\Drupal\bos311\Controller\Bos311Controller::bos311'
+    _title: 'Bos311'
+  requirements:
+    _permission: 'access content'
+

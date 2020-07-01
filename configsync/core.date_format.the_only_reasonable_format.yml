@@ -1,0 +1,8 @@
+uuid: f99185a1-5923-4d37-b1c6-5ebfe4b1e5f0
+langcode: en
+status: true
+dependencies: {  }
+id: the_only_reasonable_format
+label: 'The only reasonable format'
+locked: false
+pattern: 'Y-m-d h:i:s a'

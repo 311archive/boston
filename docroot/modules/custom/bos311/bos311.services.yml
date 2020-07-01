@@ -1,0 +1,8 @@
+services:
+  bos311.record:
+    class: Drupal\bos311\Record
+
+  bos311_api_event.build_subscriber:
+    class: Drupal\bos311\EventSubscriber\Bos311ApiEventSubscriber
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,19 @@
+uuid: 8db4e741-9699-47b0-9e64-2e47e1652b10
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_url
+    - node.type.report
+id: node.report.field_media_url
+field_name: field_media_url
+entity_type: node
+bundle: report
+label: 'Media URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

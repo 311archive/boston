@@ -1,0 +1,25 @@
+uuid: 0ffbf1cf-b654-43ab-be97-a36cb3dc02b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bos311bootstrap
+_core:
+  default_config_hash: 0XmTH5dbJRl-fsDBgX10MzeFMarkhKpzU7ZGdGPfAMU
+id: bos311bootstrap_branding
+theme: bos311bootstrap
+region: nav_branding
+weight: -6
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

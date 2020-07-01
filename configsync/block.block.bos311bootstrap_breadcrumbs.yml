@@ -1,0 +1,22 @@
+uuid: 0fbf128d-938d-43ee-97ac-33538a4ac141
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bos311bootstrap
+_core:
+  default_config_hash: B4RbOEFqUHi5Wx38pRiZzYXo1hhKzCpF50HCAvpOYf4
+id: bos311bootstrap_breadcrumbs
+theme: bos311bootstrap
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,5 @@
+name: 'Boston 311'
+core_version_requirement: '^9'
+type: module
+package: Other
+description: 'Fetch and store Boston 311 reports as nodes.'

@@ -1,0 +1,21 @@
+uuid: e121a386-b537-44d2-a3e8-52904c3e19f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_requested_timestamp
+    - node.type.report
+id: node.report.field_requested_timestamp
+field_name: field_requested_timestamp
+entity_type: node
+bundle: report
+label: 'Requested Timestamp'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1592876776
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,8 @@
+uuid: ffbbeb5b-5dd8-491c-8f58-7a39b970aa6a
+langcode: en
+status: true
+dependencies: {  }
+name: Neighborhoods
+vid: neighborhoods
+description: ''
+weight: 0

@@ -1,0 +1,9 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+
+function bos311_cron() {
+  $fetch = new \Drupal\bos311\FetchResponses();
+  $fetch->doFetchRecords();
+}
+

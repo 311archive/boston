@@ -1,0 +1,20 @@
+uuid: cde3f782-a91a-4c71-bf6f-fb586c3fa1c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_requested_datetime
+field_name: field_requested_datetime
+entity_type: node
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
