@@ -1190,17 +1190,30 @@ display:
             group_items: {  }
           plugin_id: datetime
       sorts:
-        field_requested_timestamp_value:
-          id: field_requested_timestamp_value
-          table: node__field_requested_timestamp
-          field: field_requested_timestamp_value
+        field_requested_datetime_value:
+          id: field_requested_datetime_value
+          table: node__field_requested_datetime
+          field: field_requested_datetime_value
           relationship: none
           group_type: group
           admin_label: ''
           order: DESC
-          exposed: false
+          exposed: true
           expose:
-            label: ''
+            label: 'Date Opened'
+          granularity: second
+          plugin_id: datetime
+        field_service_request_id_value:
+          id: field_service_request_id_value
+          table: node__field_service_request_id
+          field: field_service_request_id_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Request ID'
           plugin_id: standard
       title: 'Search Boston 311 Reports'
       empty:
@@ -1245,6 +1258,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user
         - 'user.node_grants:view'
         - user.permissions
@@ -1289,6 +1304,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user
         - 'user.node_grants:view'
         - user.permissions
@@ -1402,6 +1419,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
