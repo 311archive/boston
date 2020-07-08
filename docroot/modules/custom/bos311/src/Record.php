@@ -288,11 +288,11 @@ class Record
         return $date;
     }
 
-    private function formatIso8601($timestamp) {
+    public static function formatIso8601($timestamp) {
         return date('Y-m-d\TH:i:s', ($timestamp + 14400));
     }
 
-    private function cleanChars($string) {
+    public static function cleanChars($string) {
         $cleanString = preg_replace('/[\x00-\x1F\x7F-\xFF]/', '', $string);
         return $cleanString;
     }
