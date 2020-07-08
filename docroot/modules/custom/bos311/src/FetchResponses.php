@@ -91,10 +91,10 @@ class FetchResponses
     }
     
     private function doUpdateExistingOpenRecords() {
-        $this->findOpenRecentRecords();
+        $this->openRecordsRecentNids = $this->findOpenRecords(14);
         $this->updateOpenRecords($this->openRecordsRecentNids, 'Recent');
 
-        $this->findOpenOlderRecords();
+        $this->openRecordsOlderNids = $this->findOpenRecords(180);
         $this->updateOpenRecords($this->openRecordsOlderNids, 'Older');
     }
 
@@ -215,38 +215,25 @@ class FetchResponses
         $this->lowestLocalServiceRequestId = $lowestLocalServiceRequestId;
     }
 
-    private function findOpenRecentRecords() {
-        // Recent (last two weeks)
+    /**
+     * @param int $daysOld
+     *   The number of days old reports can be.
+     *
+     * @return array
+     *   An array of node ids.
+     */
+    private function findOpenRecords(int $daysOld) {
         $query = \Drupal::database()->select('node_field_data', 'n');
         $query->join('node__field_status', 'nfs', 'n.nid = nfs.entity_id');
         $query->join('node__field_requested_timestamp', 'nfr', 'n.nid = nfr.entity_id');
         $query->fields('n', ['nid']);
         $query->condition('type', 'report');
         $query->condition('nfs.field_status_value', 'open');
-        $query->condition('nfr.field_requested_timestamp_value', time() - (14 * 24 * 60 * 60), '>');
+        $query->condition('nfr.field_requested_timestamp_value', time() - ($daysOld * 24 * 60 * 60), '>');
         $query->range(0, $this->numberOfExistingOpenRecordsToUpdate);
         $query->orderRandom();
 
-        $recentNids = $query->execute()->fetchCol();
-
-        $this->openRecordsRecentNids = $recentNids;
-    }
-
-    private function findOpenOlderRecords() {
-        // Last six months
-        $query = \Drupal::database()->select('node_field_data', 'n');
-        $query->join('node__field_status', 'nfs', 'n.nid = nfs.entity_id');
-        $query->join('node__field_requested_timestamp', 'nfr', 'n.nid = nfr.entity_id');
-        $query->fields('n', ['nid']);
-        $query->condition('type', 'report');
-        $query->condition('nfs.field_status_value', 'open');
-        $query->condition('nfr.field_requested_timestamp_value', time() - (180 * 24 * 60 * 60), '>');
-        $query->range(0, $this->numberOfExistingOpenRecordsToUpdate);
-        $query->orderRandom();
-
-        $olderNids = $query->execute()->fetchCol();
-
-        $this->openRecordsOlderNids = $olderNids;
+        return $query->execute()->fetchCol();
     }
 
     private function processRecord() {
