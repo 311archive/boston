@@ -3,7 +3,8 @@
 namespace Drupal\bos311;
 
 use Drupal\node\Entity\Node;
-use phpDocumentor\Reflection\Types\Integer;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 class FetchResponses
 {
@@ -112,7 +113,10 @@ class FetchResponses
                     'closed'
                 );
                 $updateRecord->updateReportData();
-                if ($updateRecord->saveUpdatedExistingReport()) {
+                if ($updatedRecord = $updateRecord->saveUpdatedExistingReport()) {
+                    $message = 'Updated: node/' . $updatedRecord->id() . ' <em>' . $updatedRecord->getTitle() . '</em> is now closed.';
+                    \Drupal::logger('Boston 311 Reports Content Updates')->notice($message);
+                    $updatedRecord->id();
                     $this->randomRecordsUpdated++;
                 }
             }
@@ -205,9 +209,11 @@ class FetchResponses
     private function findOpenRecords() {
         $query = \Drupal::database()->select('node_field_data', 'n');
         $query->join('node__field_status', 'nfs', 'n.nid = nfs.entity_id');
+        $query->join('node__field_requested_timestamp', 'nfr', 'n.nid = nfr.entity_id');
         $query->fields('n', ['nid']);
         $query->condition('type', 'report');
         $query->condition('nfs.field_status_value', 'open');
+        $query->condition('nfr.field_requested_timestamp_value', $this->ageOfOldestReportToUpdate(), '>');
         $query->range(0, $this->numberOfExistingOpenRecordsToUpdate);
         $query->orderRandom();
 
@@ -241,6 +247,11 @@ class FetchResponses
         $message = "<ul>$message</ul>";
 
         \Drupal::logger('Boston 311 Reports')->notice($message);
+    }
+
+    private function ageOfOldestReportToUpdate() {
+        // One month.
+        return time() - (30 * 24 * 60 * 60);
     }
 
 }

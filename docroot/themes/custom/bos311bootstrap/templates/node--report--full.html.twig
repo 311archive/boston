@@ -87,8 +87,16 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><h4>{{ content.field_service_name }}</h4></li>
         <li class="list-group-item">{{ content.field_neighborhood.0 }} / {{ content.field_zip_code.0 }}</li>
-        <li class="list-group-item"><h6>Opened on:</h6> {{ content.field_requested_datetime }}</li>
-        <li class="list-group-item">{{ content.field_description }}</li>
+        <li class="list-group-item">
+          <h6>Opened on:</h6> <em>{{ content.field_requested_datetime }}</em>
+          <p>{{ content.field_description }}</p>
+        </li>
+        {% if content.field_status_notes|render %}
+          <li class="list-group-item">
+            <h6>Closed on:</h6> <em>{{ content.field_updated_datetime }}</em>
+            <p>{{ content.field_status_notes }}</p>
+          </li>
+        {% endif %}
         <li class="list-group-item">{{ content.field_address }}</li>
         <li class="list-group-item">
           <iframe height="350" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openlinkmap.org/small.php?lat={{ content.field_latitude.0 }}&lon={{ content.field_longitude.0 }}&zoom=17"></iframe>
