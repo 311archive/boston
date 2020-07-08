@@ -134,8 +134,8 @@ content:
     weight: 14
     label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: long
     third_party_settings: {  }
     type: datetime_default
     region: content

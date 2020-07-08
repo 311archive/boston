@@ -10,15 +10,17 @@ dependencies:
     - field.storage.node.field_requested_datetime
     - field.storage.node.field_requested_timestamp
     - field.storage.node.field_service_name
+    - field.storage.node.field_status
     - node.type.report
     - system.menu.main
     - taxonomy.vocabulary.neighborhoods
     - taxonomy.vocabulary.service
   content:
-    - 'taxonomy_term:neighborhoods:4469f261-386d-4916-bad7-21ff12784097'
+    - 'taxonomy_term:service:a1de9257-fdbf-4856-b8d6-79a990c6ac20'
   module:
     - datetime
     - node
+    - options
     - taxonomy
     - user
 _core:
@@ -449,6 +451,68 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        field_status:
+          id: field_status
+          table: node__field_status
+          field: field_status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: true
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         field_media_url:
           id: field_media_url
           table: node__field_media_url
@@ -716,7 +780,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"card h-100\" style=\"width: 18rem;\">\r\n  {{ field_media_url }}\r\n  <div class=\"card-body\">\r\n    <h4 class=\"card-title\">{{ title }}</h5>\r\n    <span class=\"badge badge-secondary\">{{ field_neighborhood }}</span>\r\n    <p class=\"card-text\">{{ field_description }}</p>\r\n  </div>\r\n  <ul class=\"list-group list-group-flush\">\r\n    <li class=\"list-group-item\">{{ field_requested_timestamp }}</li>\r\n  </ul>\r\n  <div class=\"card-footer text-muted\">\r\n    <a href=\"/node/{{ nid }}\" class=\"btn btn-primary stretched-link\">More details</a>\r\n  </div>\r\n</div>"
+            text: "<div class=\"card h-100\" style=\"width: 18rem;\">\r\n  {{ field_media_url }}\r\n  <div class=\"card-body\">\r\n    <h4 class=\"card-title\">{{ title }}</h5>\r\n    <span class=\"badge badge-secondary\">{{ field_status }}</span>\r\n    <span class=\"badge badge-secondary\">{{ field_neighborhood }}</span>\r\n    <p class=\"card-text\">{{ field_description }}</p>\r\n  </div>\r\n  <ul class=\"list-group list-group-flush\">\r\n    <li class=\"list-group-item\">{{ field_requested_timestamp }}</li>\r\n  </ul>\r\n  <div class=\"card-footer text-muted\">\r\n    <a href=\"/node/{{ nid }}\" class=\"btn btn-primary stretched-link\">More details</a>\r\n  </div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -1143,6 +1207,47 @@ display:
                 operator: 'not empty'
                 value: ''
           plugin_id: string
+        field_status_value:
+          id: field_status_value
+          table: node__field_status
+          field: field_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_status_value_op
+            label: Status
+            description: ''
+            use_operator: false
+            operator: field_status_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_status_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
         field_requested_datetime_value:
           id: field_requested_datetime_value
           table: node__field_requested_datetime
@@ -1272,6 +1377,7 @@ display:
         - 'config:field.storage.node.field_requested_datetime'
         - 'config:field.storage.node.field_requested_timestamp'
         - 'config:field.storage.node.field_service_name'
+        - 'config:field.storage.node.field_status'
   page:
     display_options:
       path: reports
@@ -1318,6 +1424,7 @@ display:
         - 'config:field.storage.node.field_requested_datetime'
         - 'config:field.storage.node.field_requested_timestamp'
         - 'config:field.storage.node.field_service_name'
+        - 'config:field.storage.node.field_status'
   page_1:
     display_plugin: page
     id: page_1
@@ -1431,3 +1538,4 @@ display:
         - 'config:field.storage.node.field_requested_datetime'
         - 'config:field.storage.node.field_requested_timestamp'
         - 'config:field.storage.node.field_service_name'
+        - 'config:field.storage.node.field_status'
