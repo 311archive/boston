@@ -21,6 +21,7 @@ class Response {
     catch (ServerException $e) {
       if ($retryOnError) {
         $retryOnError--;
+          usleep(500000);
         return self::fetch($url, $retryOnError);
       }
       echo 'Caught response: ' . $e->getResponse()->getStatusCode();

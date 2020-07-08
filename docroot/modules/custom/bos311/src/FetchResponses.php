@@ -9,14 +9,16 @@ use Drupal\Core\Url;
 class FetchResponses
 {
 
+    private $timestart;
+
     private int $numberOfRecordsToGetPerRun = 500;
-    private int $numberOfExistingOpenRecordsToUpdate = 500;
+    private int $numberOfExistingOpenRecordsToUpdate = 250;
 
     private int $recordsSaved = 0;
     private int $recordsFailedToSave = 0;
     private int $apiRequestsMade = 0;
-    private int $randomRecordsStillOpen = 0;
-    private int $randomRecordsUpdated = 0;
+    private int $openRecentRecordsClosed = 0;
+    private int $openOlderRecordsClosed = 0;
 
     private $serviceRequestId;
     private $rawRecord;
@@ -25,11 +27,13 @@ class FetchResponses
     private int $highestRemoteServiceRequestId;
     private int $lowestLocalServiceRequestId;
     private int $lowestRemoteServiceRequestId = 101000000000;
-    private array $openRecordsNids;
+    private array $openRecordsRecentNids;
+    private array $openRecordsOlderNids;
 
 
     public function __construct()
     {
+        $this->timestart = time();
         $this->findHighestRemoteServiceRequestId();
         $this->findHighestLocalServiceRequestId();
         $this->findLowestLocalServiceRequestId();
@@ -89,8 +93,16 @@ class FetchResponses
     }
     
     private function doUpdateExistingOpenRecords() {
-        $this->findOpenRecords();
-        foreach ($this->openRecordsNids as $openRecordNid) {
+        $this->findOpenRecentRecords();
+        $this->updateOpenRecords($this->openRecordsRecentNids, 'Recent');
+
+        $this->findOpenOlderRecords();
+        $this->updateOpenRecords($this->openRecordsOlderNids, 'Older');
+    }
+
+    private function updateOpenRecords($openNids, $name = 'Recent') {
+        foreach ($openNids as $openRecordNid) {
+            $typeString = 'open' . $name . 'RecordsClosed';
             $node = Node::load($openRecordNid);
             $serviceRequestId = $node->get('field_service_request_id')->value;
             $response = Response::fetch(
@@ -100,7 +112,6 @@ class FetchResponses
 
             if ($rawRecord->status != 'closed') {
                 // This report is still open. Move on.
-                $this->randomRecordsStillOpen++;
                 continue;
             }
             else {
@@ -117,7 +128,7 @@ class FetchResponses
                     $message = 'Updated: node/' . $updatedRecord->id() . ' <em>' . $updatedRecord->getTitle() . '</em> is now closed.';
                     \Drupal::logger('Boston 311 Reports Content Updates')->notice($message);
                     $updatedRecord->id();
-                    $this->randomRecordsUpdated++;
+                    $this->$typeString++;
                 }
             }
         }
@@ -206,19 +217,38 @@ class FetchResponses
         $this->lowestLocalServiceRequestId = $lowestLocalServiceRequestId;
     }
 
-    private function findOpenRecords() {
+    private function findOpenRecentRecords() {
+        // Recent (last two weeks)
         $query = \Drupal::database()->select('node_field_data', 'n');
         $query->join('node__field_status', 'nfs', 'n.nid = nfs.entity_id');
         $query->join('node__field_requested_timestamp', 'nfr', 'n.nid = nfr.entity_id');
         $query->fields('n', ['nid']);
         $query->condition('type', 'report');
         $query->condition('nfs.field_status_value', 'open');
-        $query->condition('nfr.field_requested_timestamp_value', $this->ageOfOldestReportToUpdate(), '>');
+        $query->condition('nfr.field_requested_timestamp_value', time() - (14 * 24 * 60 * 60), '>');
         $query->range(0, $this->numberOfExistingOpenRecordsToUpdate);
         $query->orderRandom();
 
-        $nids = $query->execute()->fetchCol();
-        $this->openRecordsNids = $nids;
+        $recentNids = $query->execute()->fetchCol();
+
+        $this->openRecordsRecentNids = $recentNids;
+    }
+
+    private function findOpenOlderRecords() {
+        // Last six months
+        $query = \Drupal::database()->select('node_field_data', 'n');
+        $query->join('node__field_status', 'nfs', 'n.nid = nfs.entity_id');
+        $query->join('node__field_requested_timestamp', 'nfr', 'n.nid = nfr.entity_id');
+        $query->fields('n', ['nid']);
+        $query->condition('type', 'report');
+        $query->condition('nfs.field_status_value', 'open');
+        $query->condition('nfr.field_requested_timestamp_value', time() - (180 * 24 * 60 * 60), '>');
+        $query->range(0, $this->numberOfExistingOpenRecordsToUpdate);
+        $query->orderRandom();
+
+        $olderNids = $query->execute()->fetchCol();
+
+        $this->openRecordsOlderNids = $olderNids;
     }
 
     private function processRecord() {
@@ -233,10 +263,11 @@ class FetchResponses
             'API calls:' => $this->apiRequestsMade,
             'Records saved:' => $this->recordsSaved,
             'Records failed' => $this->recordsFailedToSave,
-            'Random records updated' => $this->randomRecordsUpdated,
-            'Random records still open' => $this->randomRecordsStillOpen,
+            'Recent records now closed' => $this->openRecentRecordsClosed,
+            'Older records now closed' => $this->openOlderRecordsClosed,
             'Start LI:' => $this->highestLocalServiceRequestId,
             'Start FI:' => $this->lowestLocalServiceRequestId,
+            'Execution time in seconds' => (time() - $this->timestart),
         ];
 
         $message = '';
@@ -250,8 +281,8 @@ class FetchResponses
     }
 
     private function ageOfOldestReportToUpdate() {
-        // One month.
-        return time() - (30 * 24 * 60 * 60);
+        // Two weeks.
+        return time() - (14 * 24 * 60 * 60);
     }
 
 }
