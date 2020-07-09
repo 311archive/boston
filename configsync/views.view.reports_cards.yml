@@ -16,7 +16,7 @@ dependencies:
     - taxonomy.vocabulary.neighborhoods
     - taxonomy.vocabulary.service
   content:
-    - 'taxonomy_term:service:a1de9257-fdbf-4856-b8d6-79a990c6ac20'
+    - 'taxonomy_term:neighborhoods:4469f261-386d-4916-bad7-21ff12784097'
   module:
     - datetime
     - node
@@ -44,7 +44,7 @@ display:
       query:
         type: views_query
       exposed_form:
-        type: input_required
+        type: basic
         options:
           submit_button: Find
           reset_button: true
@@ -53,8 +53,6 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Use the form above to search for reports.'
-          text_input_required_format: html
       pager:
         type: full
         options:
@@ -1248,6 +1246,67 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
+        field_requested_datetime_value_1:
+          id: field_requested_datetime_value_1
+          table: node__field_requested_datetime
+          field: field_requested_datetime_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_requested_datetime_value_1_op
+            label: 'Requested Datetime (field_requested_datetime)'
+            description: null
+            use_operator: false
+            operator: field_requested_datetime_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_requested_datetime_value_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Requested within the last...'
+            description: 'Set this to "Any" if you use the following "between" date filter'
+            identifier: field_requested_datetime_value_1
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: '1'
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Week
+                operator: '>='
+                value:
+                  type: offset
+                  value: '-1 week'
+                  min: ''
+                  max: ''
+              2:
+                title: Year
+                operator: '>='
+                value:
+                  type: offset
+                  value: '-1 year'
+                  min: ''
+                  max: ''
+          plugin_id: datetime
         field_requested_datetime_value:
           id: field_requested_datetime_value
           table: node__field_requested_datetime
