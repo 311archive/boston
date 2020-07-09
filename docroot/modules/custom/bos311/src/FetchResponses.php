@@ -123,9 +123,6 @@ class FetchResponses
                 );
                 $updateRecord->updateReportData();
                 if ($updatedRecord = $updateRecord->saveUpdatedExistingReport()) {
-                    $message = 'Updated: node/' . $updatedRecord->id() . ' <em>' . $updatedRecord->getTitle() . '</em> is now closed.';
-                    \Drupal::logger('Boston 311 Reports Content Updates')->notice($message);
-                    $updatedRecord->id();
                     $this->$typeString++;
                 }
             }
