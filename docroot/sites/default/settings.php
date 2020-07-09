@@ -748,4 +748,7 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 }
 if (file_exists('/var/www/settings.digitalocean.php')) {
   include '/var/www/settings.digitalocean.php';
+    $settings['trusted_host_patterns'] = [
+        '^311\.report$',
+    ];
 }
