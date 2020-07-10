@@ -1291,6 +1291,14 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
+                title: Day
+                operator: '>='
+                value:
+                  type: offset
+                  value: '-1 day'
+                  min: ''
+                  max: ''
+              2:
                 title: Week
                 operator: '>='
                 value:
@@ -1298,7 +1306,7 @@ display:
                   value: '-1 week'
                   min: ''
                   max: ''
-              2:
+              3:
                 title: Year
                 operator: '>='
                 value:
