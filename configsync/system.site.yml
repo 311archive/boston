@@ -1,6 +1,6 @@
 uuid: 77536548-9dd3-4752-b7c3-aef93731de18
 name: 'Boston 311 Archive'
-mail: balsam.adam@gmail.com
+mail: contact@311.report
 slogan: ''
 page:
   403: ''
@@ -12,3 +12,4 @@ langcode: en
 default_langcode: en
 _core:
   default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+mail_notification: ''
