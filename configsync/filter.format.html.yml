@@ -1,9 +1,7 @@
 uuid: f37a1e7e-1b06-4ef5-9483-fd349e97445a
 langcode: en
 status: true
-dependencies:
-  module:
-    - media
+dependencies: {  }
 name: HTML
 format: html
 weight: 0
@@ -36,12 +34,3 @@ filters:
     status: true
     weight: 10
     settings: {  }
-  media_embed:
-    id: media_embed
-    provider: media
-    status: false
-    weight: 100
-    settings:
-      default_view_mode: default
-      allowed_media_types: {  }
-      allowed_view_modes: {  }

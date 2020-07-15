@@ -1,0 +1,22 @@
+uuid: e62c01f9-da07-4f5b-84b9-c292a97267e8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: reports_service_request_ids
+label: 'Reports Service Request IDs'
+type: 'canonical_entities:node'
+pattern: 'report/[node:field_service_request_id]'
+selection_criteria:
+  11e3d71e-1a12-490a-8b85-fed4a175f2bc:
+    id: node_type
+    bundles:
+      report: report
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 11e3d71e-1a12-490a-8b85-fed4a175f2bc
+selection_logic: and
+weight: -5
+relationships: {  }

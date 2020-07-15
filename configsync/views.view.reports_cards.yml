@@ -122,7 +122,7 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: true
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
@@ -778,7 +778,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"card h-100\" style=\"width: 18rem;\">\r\n  {{ field_media_url }}\r\n  <div class=\"card-body\">\r\n    <h4 class=\"card-title\">{{ title }}</h5>\r\n    <span class=\"badge badge-secondary\">{{ field_status }}</span>\r\n    <span class=\"badge badge-secondary\">{{ field_neighborhood }}</span>\r\n    <p class=\"card-text\">{{ field_description }}</p>\r\n  </div>\r\n  <ul class=\"list-group list-group-flush\">\r\n    <li class=\"list-group-item\">{{ field_requested_timestamp }}</li>\r\n  </ul>\r\n  <div class=\"card-footer text-muted\">\r\n    <a href=\"/node/{{ nid }}\" class=\"btn btn-primary stretched-link\">More details</a>\r\n  </div>\r\n</div>"
+            text: "<div class=\"card h-100\" style=\"width: 18rem;\">\r\n  {{ field_media_url }}\r\n  <div class=\"card-body\">\r\n    <h4 class=\"card-title\">{{ title }}</h5>\r\n    <span class=\"badge badge-secondary\">{{ field_status }}</span>\r\n    <span class=\"badge badge-secondary\">{{ field_neighborhood }}</span>\r\n    <p class=\"card-text\">{{ field_description }}</p>\r\n  </div>\r\n  <ul class=\"list-group list-group-flush\">\r\n    <li class=\"list-group-item\">{{ field_requested_timestamp }}</li>\r\n  </ul>\r\n  <div class=\"card-footer text-muted\">\r\n    <a href=\"{{ view_node }}\" class=\"btn btn-primary stretched-link\">More details</a>\r\n  </div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
