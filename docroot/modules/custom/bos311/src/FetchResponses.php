@@ -57,6 +57,7 @@ class FetchResponses
         }
         if (($this->serviceRequestId - $this->highestLocalServiceRequestId) > $this->numberOfRecordsToGetPerRun) {
             // Reached the max number of records to get per run.
+            \Drupal::state()->set('highest-attempted-service-request-id', $this->serviceRequestId);
             $this->serviceRequestId = null;
             return;
         }
@@ -173,6 +174,8 @@ class FetchResponses
     }
 
     private function findHighestLocalServiceRequestId() {
+        $highestAttemptedLocalServiceRequestId = \Drupal::state()->get('highest-attempted-service-request-id', false);
+
         $nids = \Drupal::entityQuery('node')
             ->condition('type','report')
             ->range(0, 1)
@@ -186,8 +189,7 @@ class FetchResponses
         else {
             $highestLocalServiceRequestId = $this->highestRemoteServiceRequestId;
         }
-
-         $this->highestLocalServiceRequestId = $highestLocalServiceRequestId;
+        $this->highestLocalServiceRequestId = ($highestLocalServiceRequestId > $highestAttemptedLocalServiceRequestId) ? $highestLocalServiceRequestId : $highestAttemptedLocalServiceRequestId;
     }
 
     private function findLowestLocalServiceRequestId() {
