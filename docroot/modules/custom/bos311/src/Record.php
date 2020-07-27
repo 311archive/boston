@@ -43,6 +43,7 @@ class Record
         // record because the one's provided can be inconsistent.
         $this->service_request_id = $serviceRequestId;
         $this->validateTimestampFields();
+        $this->validateLatLongFields();
         $this->checkForExistingReport();
         $this->fetchLocationData();
         $this->gatherValues();
@@ -274,6 +275,17 @@ class Record
         }
     }
 
+    private function validateLatLongFields() {
+        $latLongFields = [
+            'lat',
+            'long',
+        ];
+
+        foreach ($latLongFields as $latLongField) {
+            $this->$latLongField = $this->formatLatLong($this->$latLongField);
+        }
+    }
+
     /**
      * Validates that a string is a valid ISO 8601 date string.
      * @param $date
@@ -286,6 +298,16 @@ class Record
             self::formatDateTime(mktime(time()));
         }
         return $date;
+    }
+
+    public static function formatLatLong($string) {
+        preg_match("/[a-z]/i", $string, $match, PREG_OFFSET_CAPTURE);
+
+        if ($match) {
+            $string = substr($string, 0, $match[0][1]);
+        }
+
+        return $string;
     }
 
     public static function formatIso8601($timestamp) {

@@ -16,5 +16,8 @@ vendor/
 # Dev DB
 /fixtures/.development
 
+# Test files
+/docroot/sites/simpletest
+
 # PHPStorm
 .idea
