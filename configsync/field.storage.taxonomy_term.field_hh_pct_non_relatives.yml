@@ -1,0 +1,20 @@
+uuid: b64639b4-5b44-4d95-b18b-dea3087d2b35
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_hh_pct_non_relatives
+field_name: field_hh_pct_non_relatives
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

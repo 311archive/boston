@@ -1,0 +1,23 @@
+uuid: 0216644a-ada7-471b-808f-ed3fb0c083d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hh_pct_non_relatives
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_hh_pct_non_relatives
+field_name: field_hh_pct_non_relatives
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Households percent non-relatives'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal

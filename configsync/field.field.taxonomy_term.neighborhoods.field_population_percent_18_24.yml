@@ -1,0 +1,23 @@
+uuid: 4f29a083-2b5e-4513-96bb-394b19fcdd72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_population_percent_18_24
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_population_percent_18_24
+field_name: field_population_percent_18_24
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Population percent 18 - 24'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal

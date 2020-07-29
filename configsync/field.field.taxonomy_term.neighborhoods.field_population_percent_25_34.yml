@@ -1,0 +1,23 @@
+uuid: 5ef874bf-fa77-44b8-94e6-61f1d57357bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_population_percent_25_34
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_population_percent_25_34
+field_name: field_population_percent_25_34
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Population percent 25 - 34'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal

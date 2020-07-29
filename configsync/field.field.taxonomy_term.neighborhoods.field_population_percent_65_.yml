@@ -1,0 +1,23 @@
+uuid: 39f358d4-1b87-43fb-a837-68468bb6ec5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_population_percent_65_
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_population_percent_65_
+field_name: field_population_percent_65_
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Population percent 65+'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal

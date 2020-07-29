@@ -1,0 +1,23 @@
+uuid: e3afb674-435d-4e14-a483-9739473fdb8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_population
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_population
+field_name: field_population
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: Population
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

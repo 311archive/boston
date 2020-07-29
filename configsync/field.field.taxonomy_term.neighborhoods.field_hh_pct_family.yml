@@ -1,0 +1,23 @@
+uuid: 9fcd9a0e-f41b-4cbb-ba9f-da77cb0891d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hh_pct_family
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_hh_pct_family
+field_name: field_hh_pct_family
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Households percent family'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal
