@@ -1,0 +1,23 @@
+uuid: b60764f4-3f11-463b-9d08-c258369ec071
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_rent_median
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_rent_median
+field_name: field_rent_median
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Rent median'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: $
+  suffix: ''
+field_type: decimal

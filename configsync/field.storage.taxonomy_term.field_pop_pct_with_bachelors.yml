@@ -1,0 +1,20 @@
+uuid: 3d2f03cf-27fe-4b0b-ad67-845779258f7a
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_pop_pct_with_bachelors
+field_name: field_pop_pct_with_bachelors
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

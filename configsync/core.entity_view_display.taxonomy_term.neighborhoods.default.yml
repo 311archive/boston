@@ -1,0 +1,211 @@
+uuid: 2dd3134b-9cb8-47e5-991a-dea4f5487db7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.neighborhoods.field_condo_pct_owner_occupied
+    - field.field.taxonomy_term.neighborhoods.field_hh_pct_family
+    - field.field.taxonomy_term.neighborhoods.field_hh_pct_non_relatives
+    - field.field.taxonomy_term.neighborhoods.field_hh_pct_one_person
+    - field.field.taxonomy_term.neighborhoods.field_hh_pct_with_car
+    - field.field.taxonomy_term.neighborhoods.field_pop_pct_with_bachelors
+    - field.field.taxonomy_term.neighborhoods.field_population
+    - field.field.taxonomy_term.neighborhoods.field_population_percent_18_24
+    - field.field.taxonomy_term.neighborhoods.field_population_percent_25_34
+    - field.field.taxonomy_term.neighborhoods.field_population_percent_35_64
+    - field.field.taxonomy_term.neighborhoods.field_population_percent_5_17
+    - field.field.taxonomy_term.neighborhoods.field_population_percent_65_
+    - field.field.taxonomy_term.neighborhoods.field_population_percent_foreign
+    - field.field.taxonomy_term.neighborhoods.field_population_percentage_5
+    - field.field.taxonomy_term.neighborhoods.field_rent_median
+    - field.field.taxonomy_term.neighborhoods.field_units_pct_renter_occupied
+    - taxonomy.vocabulary.neighborhoods
+  module:
+    - text
+id: taxonomy_term.neighborhoods.default
+targetEntityType: taxonomy_term
+bundle: neighborhoods
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_condo_pct_owner_occupied:
+    weight: 21
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hh_pct_family:
+    weight: 17
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hh_pct_non_relatives:
+    weight: 16
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hh_pct_one_person:
+    weight: 18
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_hh_pct_with_car:
+    weight: 19
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_pop_pct_with_bachelors:
+    weight: 20
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_population:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_population_percent_18_24:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_population_percent_25_34:
+    weight: 5
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_population_percent_35_64:
+    weight: 6
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_population_percent_5_17:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_population_percent_65_:
+    weight: 7
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_population_percent_foreign:
+    weight: 8
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_population_percentage_5:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_rent_median:
+    weight: 23
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_units_pct_renter_occupied:
+    weight: 22
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+hidden: {  }

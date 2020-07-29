@@ -1,0 +1,23 @@
+uuid: 053c02b6-471c-480a-9aac-6041b3166d9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_units_pct_renter_occupied
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_units_pct_renter_occupied
+field_name: field_units_pct_renter_occupied
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Units all percent renter occupied'
+description: 'Of the total number of housing units, the percentage that are renter occupied.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal

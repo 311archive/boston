@@ -1,0 +1,20 @@
+uuid: 398d50d5-6357-4b26-b8cd-4f9a515492ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_population_percent_25_34
+field_name: field_population_percent_25_34
+entity_type: taxonomy_term
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

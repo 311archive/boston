@@ -1,0 +1,23 @@
+uuid: 9b0089c9-af64-47e7-8a58-a2e864626aec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_population_percent_foreign
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_population_percent_foreign
+field_name: field_population_percent_foreign
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Population percent foreign born'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal

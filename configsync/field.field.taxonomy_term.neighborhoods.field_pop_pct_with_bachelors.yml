@@ -1,0 +1,23 @@
+uuid: b3737a6b-c2be-41c0-8add-c964cd2e52c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_pop_pct_with_bachelors
+    - taxonomy.vocabulary.neighborhoods
+id: taxonomy_term.neighborhoods.field_pop_pct_with_bachelors
+field_name: field_pop_pct_with_bachelors
+entity_type: taxonomy_term
+bundle: neighborhoods
+label: 'Population percent with bachelors or higher'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: '%'
+field_type: decimal
