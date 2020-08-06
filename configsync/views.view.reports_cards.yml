@@ -1612,7 +1612,19 @@ display:
         options:
           items_per_page: 80
           offset: 0
-      sorts: {  }
+      sorts:
+        field_requested_timestamp_value:
+          id: field_requested_timestamp_value
+          table: node__field_requested_timestamp
+          field: field_requested_timestamp_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
       arguments:
         name:
           id: name
