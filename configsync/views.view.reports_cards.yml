@@ -1649,13 +1649,13 @@ display:
             bundles:
               neighborhoods: neighborhoods
             operation: view
+            transform: true
             access: false
-            transform: false
           glossary: false
           limit: 0
           case: ucwords
           path_case: none
-          transform_dash: true
+          transform_dash: false
           break_phrase: false
           add_table: false
           require_value: false
