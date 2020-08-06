@@ -1497,6 +1497,7 @@ display:
       defaults:
         exposed_form: false
         empty: false
+        arguments: false
       empty:
         area_text_custom:
           id: area_text_custom
@@ -1509,6 +1510,7 @@ display:
           tokenize: false
           content: '<p>Use the form above to search for Boston 311 reports.</a>'
           plugin_id: text_custom
+      arguments: {  }
     display_plugin: page
     display_title: 'Search Page'
     id: page
@@ -1653,7 +1655,7 @@ display:
           limit: 0
           case: ucwords
           path_case: none
-          transform_dash: false
+          transform_dash: true
           break_phrase: false
           add_table: false
           require_value: false
