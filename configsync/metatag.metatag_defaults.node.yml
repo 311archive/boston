@@ -10,7 +10,7 @@ tags:
   title: '[node:title] | [site:name]'
   canonical_url: '[node:url]'
   description: 'In [node:field_neighborhood]: [node:field_description]'
-  twitter_cards_creator: '@bos311_archive'
+  twitter_cards_creator: '@311_archive'
   twitter_cards_image: '[node:field_media_url]'
   twitter_cards_site: '@bos311_archive'
   twitter_cards_description: 'In [node:field_neighborhood]: [node:field_description]'

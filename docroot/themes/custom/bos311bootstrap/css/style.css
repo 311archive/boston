@@ -10301,4 +10301,18 @@ a.tabledrag-handle .handle {
   filter: invert(0);
 }
 
+.navbar-dark .navbar-nav .dropdown-menu .nav-link, .navbar-dark .navbar-nav .dropdown-menu .nav-link.active, .navbar-dark .navbar-nav .dropdown-menu .nav-link:hover, .navbar-dark .navbar-nav .dropdown-menu .nav-link.active:hover {
+  color: #222222;
+}
+.navbar-dark .navbar-nav .dropdown-menu .nav-link.active {
+  background-color: #e9ecef;
+}
+.navbar-dark .navbar-nav .dropdown-menu .nav-link:hover {
+  background-color: #dfdfd9;
+}
+
+ul.navbar-nav ul.dropdown-menu a.nav-link {
+  color: black;
+}
+
 /*# sourceMappingURL=style.css.map */

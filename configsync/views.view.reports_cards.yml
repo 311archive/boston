@@ -1287,7 +1287,7 @@ display:
             widget: select
             multiple: false
             remember: false
-            default_group: '1'
+            default_group: All
             default_group_multiple: {  }
             group_items:
               1:
@@ -1400,7 +1400,12 @@ display:
           tokenize: false
           content: 'No reports found.'
           plugin_id: text_custom
-      arguments: {  }
+      arguments:
+        field_neighborhood_target_id:
+          id: field_neighborhood_target_id
+          table: node__field_neighborhood
+          field: field_neighborhood_target_id
+          plugin_id: numeric
       relationships: {  }
       show_admin_links: false
       filter_groups:
@@ -1464,9 +1469,46 @@ display:
         menu_name: admin
         weight: -10
       display_extenders:
-        metatag_display_extender: {  }
+        metatag_display_extender:
+          metatags:
+            title: 'Boston 311 Archive Advanced Search'
+            description: 'Search Boston 311 reports by neighborhood, date, keyword, and more.'
+            geo_placename: 'Boston, MA'
+            twitter_cards_type: summary
+            twitter_cards_site: '@311_archive'
+            twitter_cards_image: /logo-rounded.png
+            twitter_cards_image_alt: 'Boston 311 Archive'
+            twitter_cards_image_height: '712'
+            twitter_cards_image_width: '712'
       exposed_block: false
       display_description: ''
+      exposed_form:
+        type: input_required
+        options:
+          submit_button: Find
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: html
+      defaults:
+        exposed_form: false
+        empty: false
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<p>Use the form above to search for Boston 311 reports.</a>'
+          plugin_id: text_custom
     display_plugin: page
     display_title: 'Search Page'
     id: page
@@ -1499,7 +1541,21 @@ display:
     position: 2
     display_options:
       display_extenders:
-        metatag_display_extender: {  }
+        metatag_display_extender:
+          metatags:
+            title: '[view:title]'
+            description: 'The most recent Boston 311 reports for [view:title].'
+            twitter_cards_type: summary
+            twitter_cards_description: '[view:title]'
+            twitter_cards_site: '@311_archive'
+            twitter_cards_title: '[view:title]'
+            twitter_cards_site_id: '1276722810732363776'
+            twitter_cards_creator: '@311_archive'
+            twitter_cards_creator_id: '1276722810732363776'
+            twitter_cards_image: /logo-rounded.png
+            twitter_cards_image_alt: 'Boston 311 Archive'
+            twitter_cards_image_height: '712'
+            twitter_cards_image_width: '712'
       display_description: ''
       filters: {  }
       defaults:
@@ -1509,10 +1565,13 @@ display:
         header: false
         pager: false
         sorts: false
+        arguments: false
+        title: false
+        relationships: false
       filter_groups:
         operator: AND
         groups: {  }
-      path: reports/recent
+      path: reports/recent/%
       exposed_form:
         type: basic
         options:
@@ -1524,7 +1583,7 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       menu:
-        type: normal
+        type: none
         title: 'Recent 311 reports'
         description: 'Recent Boston 311 reports'
         expanded: false
@@ -1533,27 +1592,94 @@ display:
         context: '0'
         menu_name: main
       header:
-        result:
-          id: result
+        area:
+          id: area
           table: views
-          field: result
+          field: area
           relationship: none
           group_type: group
           admin_label: ''
           empty: false
-          content: "<p>Displaying <strong>@start</strong> - <strong>@end</strong> of <strong>@total</strong></p>\r\n<p>You can also use the <a href=\"/reports\">Advanced Search</a>."
-          plugin_id: result
+          tokenize: false
+          content:
+            value: 'This is a list of recent Boston 311 reports. You can filter this list to specific neighborhood using the "Recent 311 Reports" dropdown menu or you may use the <a href="reports">Advanced Search</a>.'
+            format: html
+          plugin_id: text
       pager:
         type: some
         options:
-          items_per_page: 160
+          items_per_page: 80
           offset: 0
       sorts: {  }
+      arguments:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: term_node_tid
+          group_type: group
+          admin_label: ''
+          default_action: ignore
+          exception:
+            value: all
+            title_enable: true
+            title: 'all neighborhoods'
+          title_enable: true
+          title: 'Recent Boston 311 reports for {{ arguments.name }} '
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: taxonomy_term_name
+            fail: 'not found'
+          validate_options:
+            bundles:
+              neighborhoods: neighborhoods
+            operation: view
+            access: false
+            transform: false
+          glossary: false
+          limit: 0
+          case: ucwords
+          path_case: none
+          transform_dash: false
+          break_phrase: false
+          add_table: false
+          require_value: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: string
+      title: 'Recent Boston 311 Reports'
+      relationships:
+        term_node_tid:
+          id: term_node_tid
+          table: node_field_data
+          field: term_node_tid
+          relationship: none
+          group_type: group
+          admin_label: 'Actual Term'
+          required: true
+          vids:
+            - neighborhoods
+          entity_type: node
+          plugin_id: node_term_data
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:

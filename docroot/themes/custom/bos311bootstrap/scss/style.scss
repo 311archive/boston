@@ -39,3 +39,28 @@
 .navbar-dark .navbar-brand img {
   filter: invert(0);
 }
+
+
+.navbar-dark {
+  .navbar-nav {
+    .dropdown-menu {
+      .nav-link, .nav-link.active, .nav-link:hover, .nav-link.active:hover {
+        color: #222222;
+      }
+      .nav-link.active {
+        background-color: #e9ecef;
+      }
+      .nav-link:hover {
+        background-color: #dfdfd9;
+      }
+    }
+  }
+}
+
+ul.navbar-nav {
+  ul.dropdown-menu {
+    a.nav-link {
+      color: black;
+    }
+  }
+}
