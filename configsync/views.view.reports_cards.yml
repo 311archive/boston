@@ -1604,7 +1604,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: 'This is a list of recent Boston 311 reports. You can filter this list to specific neighborhood using the "Recent 311 Reports" dropdown menu or you may use the <a href="reports">Advanced Search</a>.'
+            value: 'This is a list of recent Boston 311 reports. You can filter this list to specific neighborhood using the "Recent Reports" dropdown menu or you may use the <a href="reports">Advanced Search</a>.'
             format: html
           plugin_id: text
       pager:
