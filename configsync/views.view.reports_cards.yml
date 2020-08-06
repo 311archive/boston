@@ -1450,7 +1450,7 @@ display:
       path: reports
       menu:
         type: normal
-        title: 'Search for 311 reports'
+        title: 'Advanced Search'
         description: ''
         expanded: false
         parent: ''
@@ -1498,60 +1498,17 @@ display:
     display_title: 'Recent Page'
     position: 2
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender: {  }
       display_description: ''
-      filters:
-        field_requested_datetime_value:
-          id: field_requested_datetime_value
-          table: node__field_requested_datetime
-          field: field_requested_datetime_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '>'
-          value:
-            min: ''
-            max: ''
-            value: '-1 month'
-            type: offset
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_requested_datetime_value_op
-            label: 'Requested Datetime (field_requested_datetime)'
-            description: ''
-            use_operator: false
-            operator: field_requested_datetime_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_requested_datetime_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: datetime
+      filters: {  }
       defaults:
         filters: false
         filter_groups: false
         exposed_form: false
         header: false
+        pager: false
+        sorts: false
       filter_groups:
         operator: AND
         groups: {  }
@@ -1567,7 +1524,7 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       menu:
-        type: none
+        type: normal
         title: 'Recent 311 reports'
         description: 'Recent Boston 311 reports'
         expanded: false
@@ -1586,15 +1543,17 @@ display:
           empty: false
           content: "<p>Displaying <strong>@start</strong> - <strong>@end</strong> of <strong>@total</strong></p>\r\n<p>You can also use the <a href=\"/reports\">Advanced Search</a>."
           plugin_id: result
+      pager:
+        type: some
+        options:
+          items_per_page: 160
+          offset: 0
+      sorts: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - url.query_args
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
