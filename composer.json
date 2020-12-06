@@ -3,7 +3,7 @@
     "description": "Drupal project that makes Boston 311 reports more accessible.",
     "type": "project",
     "require": {
-        "drupal/core-recommended": "^9",
+        "drupal/core-recommended": "~9.0.0",
         "drupal/core-composer-scaffold": "^9",
         "drush/drush": "^10",
         "composer/installers": "^1.2",
@@ -62,7 +62,10 @@
                 "2230909 - Simple decimals fail to pass validation": "https://www.drupal.org/files/issues/2020-05-07/drupal_2230909_151.patch"
             }
         },
-        "enable-patching": true
+        "enable-patching": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        }
     },
     "repositories": {
         "drupal": {
