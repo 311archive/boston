@@ -13,7 +13,8 @@
         "drupal/bootstrap4": "^2.0",
         "drupal/metatag": "^1.13",
         "drupal/pathauto": "^1.8",
-        "drupal/redirect": "^1.6"
+        "drupal/redirect": "^1.6",
+        "ext-curl": "*"
     },
     "license": "GPL-2.0-or-later",
     "authors": [

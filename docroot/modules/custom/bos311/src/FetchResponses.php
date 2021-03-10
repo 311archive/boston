@@ -20,6 +20,7 @@ class FetchResponses
 
     private $serviceRequestId;
     private $rawRecord;
+    private $apiKey;
 
     private int $highestLocalServiceRequestId;
     private int $highestRemoteServiceRequestId;
@@ -28,10 +29,10 @@ class FetchResponses
     private array $openRecordsRecentNids;
     private array $openRecordsOlderNids;
 
-
     public function __construct()
     {
         $this->timestart = time();
+        $this->setApiKey();
         $this->findHighestRemoteServiceRequestId();
         $this->findHighestLocalServiceRequestId();
         $this->findLowestLocalServiceRequestId();
@@ -105,7 +106,7 @@ class FetchResponses
             $node = Node::load($openRecordNid);
             $serviceRequestId = $node->get('field_service_request_id')->value;
             $response = Response::fetch(
-                "https://mayors24.cityofboston.gov/open311/v2/requests.json?service_request_id=$serviceRequestId"
+                "https://mayors24.cityofboston.gov/open311/v2/requests.json?service_request_id=$serviceRequestId&api_key=$this->apiKey"
             );
             $rawRecord = reset($response);
 
@@ -131,7 +132,7 @@ class FetchResponses
     }
 
     private function fetchRawRecord() {
-        $rawRecord = Response::fetch("https://mayors24.cityofboston.gov/open311/v2/requests.json?service_request_id=$this->serviceRequestId");
+        $rawRecord = Response::fetch("https://mayors24.cityofboston.gov/open311/v2/requests.json?service_request_id=$this->serviceRequestId&api_key=$this->apiKey");
         $this->apiRequestsMade++;
         $this->rawRecord = reset($rawRecord);
     }
@@ -156,7 +157,7 @@ class FetchResponses
     }
 
     private function findHighestRemoteServiceRequestId() {
-        $response = Response::fetch("https://mayors24.cityofboston.gov/open311/v2/requests.json");
+        $response = Response::fetch("https://mayors24.cityofboston.gov/open311/v2/requests.json?api_key=$this->apiKey");
         $recordToUse = reset($response);
 
         foreach ($response as $record) {
@@ -267,6 +268,16 @@ class FetchResponses
     private function ageOfOldestReportToUpdate() {
         // Two weeks.
         return time() - (14 * 24 * 60 * 60);
+    }
+
+    private function setApiKey() {
+        if (file_exists('/Users/butler/keys/bos311apikey')) {
+            return $this->apiKey = rtrim(file_get_contents('/Users/butler/keys/bos311apikey'));
+        }
+        if (file_exists('/var/www/bos311apikey')) {
+            return $this->apiKey = rtrim(file_get_contents('/var/www/bos311apikey'));
+        }
+        throw new \Exception('Unable to locate API key.');
     }
 
 }
