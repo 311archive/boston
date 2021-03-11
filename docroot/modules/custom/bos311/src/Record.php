@@ -67,7 +67,7 @@ class Record
         }
         $values = [];
         $values['type'] = 'report';
-        $values['title'] = $this->service_name . ' at ' . $this->address;
+        $values['title'] = substr($this->service_name . ' at ' . $this->address, 0, 255);
         $values['field_service_request_id'] = $this->service_request_id;
         $values['field_description'] = ($this->description) ? $this->description : $this->service_name;
         $values['field_status_notes'] = $this->status_notes;
