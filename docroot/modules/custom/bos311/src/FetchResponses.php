@@ -9,7 +9,7 @@ class FetchResponses
 
     private $timestart;
 
-    private int $numberOfRecordsToGetPerRun = 80;
+    private int $numberOfRecordsToGetPerRun = 150;
     private int $numberOfExistingOpenRecordsToUpdate = 40;
 
     private int $recordsSaved = 0;
@@ -42,7 +42,7 @@ class FetchResponses
     {
         $this->doUpdateExistingOpenRecords();
         $this->doFetchRecordsLi();
-        $this->doFetchRecordsFi();
+        //$this->doFetchRecordsFi();
         $this->recordStatistics();
     }
 
