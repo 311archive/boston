@@ -9,8 +9,8 @@ class FetchResponses
 
     private $timestart;
 
-    private int $numberOfRecordsToGetPerRun = 29;
-    private int $numberOfExistingOpenRecordsToUpdate = 29;
+    private int $numberOfRecordsToGetPerRun = 20;
+    private int $numberOfExistingOpenRecordsToUpdate = 20;
 
     private int $recordsSaved = 0;
     private int $recordsFailedToSave = 0;
