@@ -184,6 +184,9 @@ class Record
 
     private function findNeighborhoodName() {
         $neighborhoodName = 'unknown';
+        if ($this->address == 'No location specified') {
+            return 'No location Specified / City Hall';
+        }
         if ($neighborhood = $this->extractNeighborhoodFromAddress()) {
             $neighborhoodName = $neighborhood;
         }
@@ -261,7 +264,6 @@ class Record
         }
 
         return $neighborhoodName;
-
     }
 
     private function validateTimestampFields() {
