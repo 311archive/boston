@@ -52,6 +52,8 @@ class Bos311ApiEventSubscriber implements EventSubscriberInterface {
         'node--page',
         'node_type--node_type',
         'path_alias--path_alias',
+        'pathauto_pattern--pathauto_pattern',
+        'redirect--redirect',
         'self',
         'taxonomy_vocabulary--taxonomy_vocabulary',
         'user--user',
