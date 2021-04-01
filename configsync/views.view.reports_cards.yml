@@ -56,12 +56,24 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 50
+          items_per_page: 30
+          offset: 0
+          id: 0
+          total_pages: null
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
             first: '« First'
             last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       style:
         type: html_list
         options:
@@ -1287,7 +1299,7 @@ display:
             widget: select
             multiple: false
             remember: false
-            default_group: '1'
+            default_group: '2'
             default_group_multiple: {  }
             group_items:
               1:
