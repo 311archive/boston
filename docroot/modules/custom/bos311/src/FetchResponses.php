@@ -93,7 +93,7 @@ class FetchResponses
     }
     
     private function doUpdateExistingOpenRecords() {
-        $this->openRecordsRecentNids = $this->findOpenRecords(14);
+        $this->openRecordsRecentNids = $this->findOpenRecords(28);
         $this->updateOpenRecords($this->openRecordsRecentNids, 'Recent');
 
         $this->openRecordsOlderNids = $this->findOpenRecords(180);
@@ -108,6 +108,7 @@ class FetchResponses
             $response = Response::fetch(
                 "https://mayors24.cityofboston.gov/open311/v2/requests.json?service_request_id=$serviceRequestId&api_key=$this->apiKey"
             );
+            $this->apiRequestsMade++;
             $rawRecord = reset($response);
 
             if ($rawRecord->status != 'closed') {
