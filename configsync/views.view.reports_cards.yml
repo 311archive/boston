@@ -16,7 +16,7 @@ dependencies:
     - taxonomy.vocabulary.neighborhoods
     - taxonomy.vocabulary.service
   content:
-    - 'taxonomy_term:neighborhoods:4469f261-386d-4916-bad7-21ff12784097'
+    - 'taxonomy_term:neighborhoods:eb182d03-e4e4-4a56-8044-d101f391cdeb'
   module:
     - datetime
     - node
@@ -1307,6 +1307,14 @@ display:
                   min: ''
                   max: ''
               3:
+                title: Month
+                operator: '>='
+                value:
+                  type: offset
+                  value: '-1 month'
+                  min: ''
+                  max: ''
+              4:
                 title: Year
                 operator: '>='
                 value:
