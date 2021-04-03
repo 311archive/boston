@@ -1428,7 +1428,7 @@ display:
         groups:
           1: AND
       display_extenders: {  }
-      use_ajax: false
+      use_ajax: true
       header:
         result:
           id: result
@@ -1485,6 +1485,8 @@ display:
         weight: -10
       display_extenders:
         metatag_display_extender: {  }
+        ajax_history:
+          enable_history: true
       exposed_block: false
       display_description: ''
     display_plugin: page
