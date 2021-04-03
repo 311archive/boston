@@ -99,7 +99,16 @@
         {% endif %}
         <li class="list-group-item">{{ content.field_address }}</li>
         <li class="list-group-item">
-          <iframe height="350" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openlinkmap.org/small.php?lat={{ content.field_latitude.0 }}&lon={{ content.field_longitude.0 }}&zoom=17"></iframe>
+          <iframe
+                  width="100%"
+                  height="300"
+                  frameborder="0"
+                  scrolling="no"
+                  marginheight="0"
+                  marginwidth="0"
+                  src='https://maps.google.com/maps?q={{content.field_latitude.0}},{{content.field_longitude.0}}&z=14&output=embed'
+          >
+          </iframe>
         </li>
       </ul>
     </div>
