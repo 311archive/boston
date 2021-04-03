@@ -29,6 +29,11 @@ class Record
     private $nominatimServer = 'https://nominatim.openstreetmap.org';
     private $googleServer = 'https://maps.googleapis.com/maps/api/geocode/json';
 
+    private $addressesConsideredCityHall = [
+        'No location specified',
+        '1 City Hall Plz, Boston',
+    ];
+
     /**
      * Record constructor.
      * @param array $rawRecord
@@ -184,9 +189,11 @@ class Record
 
     private function findNeighborhoodName() {
         $neighborhoodName = 'unknown';
-        if ($this->address == 'No location specified') {
+
+        if (in_array($this->address, $this->addressesConsideredCityHall)) {
             return 'No location Specified / City Hall';
         }
+
         if ($neighborhood = $this->extractNeighborhoodFromAddress()) {
             $neighborhoodName = $neighborhood;
         }
