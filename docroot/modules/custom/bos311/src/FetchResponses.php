@@ -10,13 +10,14 @@ class FetchResponses
     private $timestart;
 
     private int $numberOfRecordsToGetPerRun = 20;
-    private int $numberOfExistingOpenRecordsToUpdate = 20;
+    private int $numberOfExistingOpenRecordsToUpdate = 19;
 
     private int $recordsSaved = 0;
     private int $recordsFailedToSave = 0;
     private int $apiRequestsMade = 0;
     private int $openRecentRecordsClosed = 0;
     private int $openOlderRecordsClosed = 0;
+    private int $openLast50RecordsClosed = 0;
 
     private $serviceRequestId;
     private $rawRecord;
@@ -43,6 +44,7 @@ class FetchResponses
         $this->doUpdateExistingOpenRecords();
         $this->doFetchRecordsLi();
         //$this->doFetchRecordsFi();
+        $this->doProcessRecentUpdates();
         $this->recordStatistics();
     }
 
@@ -90,6 +92,46 @@ class FetchResponses
 
         $this->serviceRequestId = $this->serviceRequestId - 1;
         $this->doFetchRecordsFi();
+    }
+
+    private function doProcessRecentUpdates() {
+        $recentReports = Response::fetch("https://mayors24.cityofboston.gov/open311/v2/requests.json?api_key=$this->apiKey");
+        foreach ($recentReports as $rawRecord) {
+            if ($rawRecord->status == 'closed') {
+                $existingReport = $this->findRecordByServiceRequestId($rawRecord->service_request_id);
+
+                if ($existingReport) {
+                    if ($existingReport->get('field_status')->value == 'closed') {
+                        // This thing is already closed both there and here. Nothing to update.
+                    }
+                    else {
+                        $existingReport->get('field_status');
+                        $status_notes = (property_exists($rawRecord, 'status_notes')) ? $rawRecord->status_notes : 'No closing notes provided';
+                        $updated_datetime = (property_exists($rawRecord, 'updated_datetime')) ? $rawRecord->updated_datetime : $rawRecord->requested_datetime;
+                        $updateRecord = new UpdateRecord(
+                            $existingReport,
+                            $status_notes,
+                            $updated_datetime,
+                            'closed'
+                        );
+                        $updateRecord->updateReportData();
+                        if ($updatedRecord = $updateRecord->saveUpdatedExistingReport()) {
+                            $this->openLast50RecordsClosed++;
+                        }
+                    }
+                }
+                else {
+                    // Hey! We found a new record the easy way! Let's save it.
+                    $this->rawRecord = $rawRecord;
+                    if ($this->isValidRawRecord()) {
+                        $this->serviceRequestId = $rawRecord->service_request_id;
+                        $this->saveRecord(); {
+                            $this->recordsSaved++;
+                        }
+                    }
+                }
+            }
+        }
     }
     
     private function doUpdateExistingOpenRecords() {
@@ -216,6 +258,19 @@ class FetchResponses
         $this->lowestLocalServiceRequestId = $lowestLocalServiceRequestId;
     }
 
+    private function findRecordByServiceRequestId($serviceRequestId) {
+        $query = \Drupal::entityQuery('node');
+        $query->condition('field_service_request_id', $serviceRequestId);
+        $results = $query->execute();
+        if ($results) {
+            if (count($results) > 1) {
+                throw new \Exception('Found more than one entity with the same Service Request ID: ' . $serviceRequestId);
+            }
+            return \Drupal::entityTypeManager()->getStorage('node')->load(reset($results));
+        }
+        return false;
+    }
+
     /**
      * @param int $daysOld
      *   The number of days old reports can be.
@@ -251,6 +306,7 @@ class FetchResponses
             'Records failed' => $this->recordsFailedToSave,
             'Recent records now closed' => $this->openRecentRecordsClosed,
             'Older records now closed' => $this->openOlderRecordsClosed,
+            'Last 50 records now closed' => $this->openLast50RecordsClosed,
             'Start LI:' => $this->highestLocalServiceRequestId,
             'Start FI:' => $this->lowestLocalServiceRequestId,
             'Execution time in seconds' => (time() - $this->timestart),
