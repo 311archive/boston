@@ -121,14 +121,11 @@ class FetchResponses
                     }
                 }
                 else {
-                    // Hey! We found a new record the easy way! Let's save it.
-                    $this->rawRecord = $rawRecord;
-                    if ($this->isValidRawRecord()) {
-                        $this->serviceRequestId = $rawRecord->service_request_id;
-                        $this->saveRecord(); {
-                            $this->recordsSaved++;
-                        }
-                    }
+                    // This means that we have found a new record that's not currently in the system. But we do not save
+                    // it here because the list that we're traversing through doesn't include the hidden categories.
+                    // Which means that there might be an older unlisted record that has not yet been saved. Saving this
+                    // record would cause the logic to start at the next sequential Service Request ID after this record
+                    // which would mean we never saved the unlisted record.
                 }
             }
         }
