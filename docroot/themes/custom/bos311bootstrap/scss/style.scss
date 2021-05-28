@@ -1,0 +1,49 @@
+// Include bootstrap variables definitions overrides.
+@import 'overrides/variables';
+
+// Include parent theme with all things Bootstrap for full override.
+// Relative path to this styles.scss file.
+// Example: @import "../../../../../themes/contrib/bootstrap4/scss/style";
+@import "../../../../themes/contrib/bootstrap4/scss/style";
+
+// OR test new Bootstrap 4.5.0
+//@import "[DOCROOT]/themes/contrib/bootstrap4/scss/style-4-5-0";
+
+// Include custom sub theme.
+@import 'custom/variables';
+
+// Include custom sub theme.
+//@import 'custom/mixins/misc';
+//@import 'custom/misc';
+
+.datetime-label {
+  clear: both;
+  display: block;
+}
+
+@media (min-width: 576px) {
+  .card-img-top {
+    height: 200px;
+  }
+}
+@media (min-width: 768px) {
+  .card-img-top {
+    height: 280px;
+  }
+}
+.card-img-top {
+  width: 100%;
+  object-fit: cover;
+}
+
+.navbar-dark .navbar-brand img {
+  filter: invert(0);
+}
+
+.ajax-progress-fullscreen {
+  background-color: transparent;
+  background-image: url("../images/loading.gif");
+  height: 178px;
+  width: 178px;
+  margin-left: -89px;
+}

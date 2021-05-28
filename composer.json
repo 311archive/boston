@@ -15,7 +15,7 @@
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
         "ext-curl": "*",
-        "drupal/views_ajax_history": "^1.5"
+        "drupal/views_ajax_history": "dev-1.x#32d4262102450e4882034db6e4276340fadc171d"
     },
     "license": "GPL-2.0-or-later",
     "authors": [
