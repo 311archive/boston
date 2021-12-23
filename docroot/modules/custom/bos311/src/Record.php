@@ -32,6 +32,10 @@ class Record
     private $addressesConsideredCityHall = [
         'No location specified',
         '1 City Hall Plz, Boston',
+        '100 City Hall Plz, Ste 202, Boston',
+        '1 City Hall Ave, Boston',
+        '500 1 City Hall Square',
+        '1 City Hall Square Downtown',
     ];
 
     /**
