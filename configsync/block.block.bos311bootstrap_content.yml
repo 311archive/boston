@@ -11,7 +11,7 @@ _core:
 id: bos311bootstrap_content
 theme: bos311bootstrap
 region: content
-weight: -1
+weight: 0
 provider: null
 plugin: system_main_block
 settings:

@@ -1,0 +1,25 @@
+uuid: a5ff147d-fd69-49eb-9b66-df55eab4b748
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic_block:57818ea5-51a3-47c8-9337-951cdd5928f6'
+  module:
+    - block_content
+  theme:
+    - bos311bootstrap
+id: notice
+theme: bos311bootstrap
+region: content
+weight: -5
+provider: null
+plugin: 'block_content:57818ea5-51a3-47c8-9337-951cdd5928f6'
+settings:
+  id: 'block_content:57818ea5-51a3-47c8-9337-951cdd5928f6'
+  label: Notice
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
